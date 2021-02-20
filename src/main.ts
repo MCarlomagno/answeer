@@ -1,3 +1,4 @@
+import * as qna from '@tensorflow-models/qna';
 // HTML Elements
 const topicInputElement = document.getElementById("topic-input");
 const topicSubmitElement = document.getElementById("topic-submit");
@@ -10,13 +11,16 @@ export class Main {
         this.setup();
     }
 
-    setup() {
+    async setup() {
         if(topicSubmitElement) {
             topicSubmitElement.onclick = this.onTopicSubmit;
         }
         if(questionSubmitElement) {
             questionSubmitElement.onclick = this.onQuestionSubmit;
         }
+
+        const model = await qna.load();
+        console.log("model loaded")
     }
 
     onTopicSubmit() {
