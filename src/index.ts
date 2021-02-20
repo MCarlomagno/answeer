@@ -1,5 +1,10 @@
-const outputElement = document.getElementById('output');
-if (outputElement) {
-  outputElement.innerHTML = "Hello World";
-}
+import { Main } from './main';
+
+window.onload = () => new Main();
+
+
+
+
+
+
 

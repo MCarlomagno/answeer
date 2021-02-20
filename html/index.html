@@ -1,11 +1,35 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>ts-demo-webpack</title>
-</head>
-<body>
-  <div id="output"></div>
-  <script src="main-bundle.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Web application able to ask questions with a given topic by using Natural language processing and Wikipedia API" />
+    <meta name="keywords" content="Machine learning, wikipedia, Natural Language Processing, web development" />
+    <title>Answeer</title>
+  </head>
+  <body>
+
+    <h1 id="title">
+      Welcome to Answeer
+    </h1>
+    <p id=subtitle>
+      Web application able to ask questions with a given topic by 
+      using Natural language processing and Wikipedia API.
+    </p>
+
+    <div>
+      <input id="topic-input" type="search" placeholder="topic"></input>
+      <button id="topic-submit" type="button">load topic</button>
+    </div>
+
+    <div>
+      <input id="question-input" type="search" placeholder="question"></input>
+      <button id="question-submit" type="submit">ask question</button>
+    </div>
+
+    <p id="output"></p>
+    <script src="main-bundle.js"></script>
+  </body>
+  <footer>
+    Author: Marcos Carlomagno
+  </footer>
 </html>
