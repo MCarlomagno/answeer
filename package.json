@@ -20,6 +20,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tensorflow-models/qna": "^1.0.0",
+    "@tensorflow/tfjs": "^2.8.6",
     "@types/lodash": "^4.14.168",
     "copy-webpack-plugin": "^7.0.0",
     "lodash": "^4.17.20",
