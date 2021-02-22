@@ -34,6 +34,7 @@ module.exports = {
             { 
               patterns: [
                 { from: './html', to: 'index.html' },
+                { from: './styles', to: 'index.css' },
               ]
             }
           ),
