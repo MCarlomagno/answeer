@@ -1,4 +1,4 @@
-import { Main } from './main';
+import { Main } from './index';
 
 test('app setup', async () => {
     const main = new Main();
