@@ -1,3 +1,4 @@
+import { enviroment } from './enviroment/enviroment';
 import { ISearchResult } from './models/search-result';
 import { AnswerService } from './services/answer.service';
 import { SearchTextService } from './services/search.service';
@@ -31,7 +32,7 @@ export class Main {
   async setup() {
     this.showLoader(true);
     this.setupEventHandling();
-    await this.loadModel();
+    if(enviroment.prod) await this.loadModel();
     this.showLoader(false);
   }
 

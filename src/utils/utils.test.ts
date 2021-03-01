@@ -1,3 +1,8 @@
 import { cleanWikipediaResults } from "./utils";
 
-test('cleanWikipediaResults', () => {});
+describe('cleanWikipediaResults', () => {
+    it('should filter invalid characters', () => {
+        const invalidChars = [];
+
+    })
+});
