@@ -1,6 +1,8 @@
 import { Main } from './index';
 
-test('app setup', async () => {
-    const main = new Main();
-    expect(main.setup()).toBeDefined();
+describe('main', () => {
+    it('should setup app', async () => {
+        const main = new Main();
+        expect(main.setup()).toBeDefined();
+    });
 });
