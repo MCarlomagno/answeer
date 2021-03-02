@@ -1,12 +1,9 @@
 import { SearchTextService } from './search.service';
 
-describe('loadTopic', () => {
-    it('should throw error on falsy parameter', () =>{
+describe('browseWikipedia', () => {
+    it('should exist', () =>{
         const service = new SearchTextService();
-        async function searchUndefined() {
-            let some = 0;
-            await service.loadTopic(some);
-        }
-        expect(searchUndefined).rejects.toThrowError("Page id undefined");
+        expect(service.browseWikipedia).toBeTruthy();
     });
+
 });
