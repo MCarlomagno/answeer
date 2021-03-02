@@ -1,4 +1,4 @@
 export interface ISearchResult {
-  pageId: number;
+  pageid: number;
   snippet: string;
 }

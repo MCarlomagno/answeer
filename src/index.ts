@@ -57,23 +57,10 @@ export class Main {
 
   async onTopicSubmit() {
     if (!topicInputElement) return;
-    const searchResults: ISearchResult[] = await this.searchTextService.searchTopics(
+  
+    await this.searchTextService.browseWikipedia(
       topicInputElement.value
     );
-
-    // TODO: the results come with noisy characters
-    // that we should remove them with a regex
-    // before adding them to our "context".
-    //
-    // Example: Searching word "Tennis"
-    // -------------------------------------------------------------------
-    // and &quot;type of administrative entity&quot; is the first
-    // suggestion instead of &quot;<span class="searchmatch">tennis</span>
-    // singles rating&quot; or other such less irrelevant suggestion,
-    //--------------------------------------------------------------------
-    if (searchResults.length > 0 && outputElement) {
-      outputElement.innerText = searchResults.map((s) => s.snippet)[0];
-    }
   }
 
   async onQuestionSubmit() {
