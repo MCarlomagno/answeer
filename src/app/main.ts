@@ -5,19 +5,15 @@ import {
 } from '../services/answer.service';
 import { SearchService } from '../services/search.service';
 
-// HTML Elements
-const topicInputElement = document.getElementById(
-  'topic-input'
-) as HTMLInputElement;
-const topicSubmitElement = document.getElementById('topic-submit');
-const questionInputElement = document.getElementById(
-  'question-input'
-) as HTMLInputElement;
-const questionSubmitElement = document.getElementById('question-submit');
-const outputElement = document.getElementById('output');
-const loaderElement = document.getElementById('loader');
-
 export class Main {
+  // HTML Elements
+  topicInputElement: HTMLInputElement | undefined | null;
+  topicSubmitElement: HTMLElement | undefined | null;
+  questionInputElement: HTMLInputElement | undefined | null;
+  questionSubmitElement: HTMLElement | undefined | null;
+  outputElement: HTMLElement | undefined | null;
+  loaderElement: HTMLElement | undefined | null;
+
   answerService: AnswerService;
   searchTextService: SearchService;
 
@@ -37,6 +33,7 @@ export class Main {
 
   async setup() {
     this.showLoader(true);
+    this.setupDOM();
     this.setupEventHandling();
     if (enviroment.prod) await this.loadModel();
     this.showLoader(false);
@@ -46,34 +43,50 @@ export class Main {
     await this.answerService.loadModel();
   }
 
+  setupDOM() {
+    // HTML Elements
+    this.topicInputElement = document.getElementById(
+      'topic-input'
+    ) as HTMLInputElement;
+    this.topicSubmitElement = document.getElementById('topic-submit');
+    this.questionInputElement = document.getElementById(
+      'question-input'
+    ) as HTMLInputElement;
+    this.questionSubmitElement = document.getElementById('question-submit');
+    this.outputElement = document.getElementById('output');
+    this.loaderElement = document.getElementById('loader');
+  }
+
   setupEventHandling() {
-    if (topicSubmitElement) {
-      topicSubmitElement.onclick = this.onTopicSubmit.bind(this);
+    if (this.topicSubmitElement) {
+      this.topicSubmitElement.onclick = this.onTopicSubmit.bind(this);
     }
-    if (questionSubmitElement) {
-      questionSubmitElement.onclick = this.onQuestionSubmit.bind(this);
+    if (this.questionSubmitElement) {
+      this.questionSubmitElement.onclick = this.onQuestionSubmit.bind(this);
     }
   }
 
   showLoader(show: boolean) {
-    if (!loaderElement) return;
-    if (show) loaderElement.style.visibility = 'visible';
-    else loaderElement.style.visibility = 'hidden';
-    return loaderElement;
+    if (!this.loaderElement) return;
+
+    const visibility = show ? 'visible' : 'hidden';
+    this.loaderElement.style.visibility = visibility;
+
+    return visibility;
   }
 
   async onTopicSubmit() {
-    if (!topicInputElement) return;
+    if (!this.topicInputElement) return;
 
-    await this.searchTextService.browseWikipedia(topicInputElement.value);
+    await this.searchTextService.browseWikipedia(this.topicInputElement.value);
   }
 
   async onQuestionSubmit() {
-    if (!questionInputElement || !outputElement) return;
+    if (!this.questionInputElement || !this.outputElement) return;
 
     const answers = await this.answerService.predict(
-      questionInputElement.value,
-      outputElement.innerText
+      this.questionInputElement.value,
+      this.outputElement.innerText
     );
 
     console.log(answers);

@@ -9,7 +9,7 @@
     "wp": "webpack",
     "wpw": "webpack --watch",
     "serve": "http-server build",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "@types/puppeteer": "^5.4.3",
@@ -32,6 +32,7 @@
     "@types/lodash": "^4.14.168",
     "copy-webpack-plugin": "^7.0.0",
     "lodash": "^4.17.20",
+    "puppeteer": "^8.0.0",
     "ts-jest": "^26.5.1",
     "ts-loader": "^8.0.17",
     "unfetch": "^4.2.0"
