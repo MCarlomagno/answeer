@@ -1,6 +1,6 @@
 import { AnswerService, MockAnswerService } from '../services/answer.service';
 import { MockTextService } from '../services/search.service';
-import { Main } from './main';
+import { Main } from '../app/main';
 
 describe('main', () => {
   // setup dummy services
