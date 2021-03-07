@@ -1,14 +1,7 @@
 import { enviroment } from '../enviroment/enviroment';
 import { ISearchResult } from '../models/search-result';
 
-export abstract class SearchService {
-  abstract searchResults: ISearchResult[] | undefined;
-  abstract context: string | undefined;
-  abstract browseWikipedia(query: string): Promise<void>;
-  abstract wikipediaSearch(query: string): Promise<void>;
-}
-
-export class SearchTextService extends SearchService {
+export class Wikipedia {
   searchResults: ISearchResult[] | undefined;
   context: string | undefined;
 
@@ -33,13 +26,4 @@ export class SearchTextService extends SearchService {
   private prefillUrl(url: string): string {
     return enviroment.herokuAppUrl + url;
   }
-}
-
-// mock service for testing
-export class MockTextService extends SearchService {
-  searchResults: ISearchResult[] | undefined;
-  context: string | undefined;
-  async browseWikipedia(query: string) {}
-  async wikipediaSearch(query: string) {}
-
 }

@@ -1,9 +1,6 @@
 import { enviroment } from '../enviroment/enviroment';
-import {
-  AnswerService,
-  WikipediaAnswerService
-} from '../services/answer.service';
-import { SearchService } from '../services/search.service';
+import { QuestionAndAnswer } from '../services/question-and-answer';
+import { Wikipedia } from '../services/wikipedia';
 
 export class Main {
   // HTML Elements
@@ -14,20 +11,20 @@ export class Main {
   outputElement: HTMLElement | undefined | null;
   loaderElement: HTMLElement | undefined | null;
 
-  answerService: AnswerService;
-  searchTextService: SearchService;
+  qna: QuestionAndAnswer;
+  wikipedia: Wikipedia;
 
   constructor(
     // tensorflow service that provides
     // QuestionAndAnswer model.
-    answerService: AnswerService,
+    qna: QuestionAndAnswer,
 
     // Wikipedia API service to perform
     // questions about some topic.
-    searchTextService: SearchService
+    wikipedia: Wikipedia
   ) {
-    this.answerService = answerService;
-    this.searchTextService = searchTextService;
+    this.qna = qna;
+    this.wikipedia = wikipedia;
     this.setup();
   }
 
@@ -40,7 +37,7 @@ export class Main {
   }
 
   async loadModel() {
-    await this.answerService.loadModel();
+    await this.qna.loadModel();
   }
 
   setupDOM() {
@@ -78,13 +75,13 @@ export class Main {
   async onTopicSubmit() {
     if (!this.topicInputElement) return;
 
-    await this.searchTextService.browseWikipedia(this.topicInputElement.value);
+    await this.wikipedia.browseWikipedia(this.topicInputElement.value);
   }
 
   async onQuestionSubmit() {
     if (!this.questionInputElement || !this.outputElement) return;
 
-    const answers = await this.answerService.predict(
+    const answers = await this.qna.predict(
       this.questionInputElement.value,
       this.outputElement.innerText
     );
