@@ -12,8 +12,6 @@
     "test": "jest --coverage"
   },
   "devDependencies": {
-    "@types/puppeteer": "^5.4.3",
-    "axios": "^0.21.1",
     "css-loader": "^5.0.2",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
@@ -32,9 +30,7 @@
     "@types/lodash": "^4.14.168",
     "copy-webpack-plugin": "^7.0.0",
     "lodash": "^4.17.20",
-    "puppeteer": "^8.0.0",
     "ts-jest": "^26.5.1",
-    "ts-loader": "^8.0.17",
-    "unfetch": "^4.2.0"
+    "ts-loader": "^8.0.17"
   }
 }
