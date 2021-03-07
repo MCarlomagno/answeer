@@ -75,7 +75,7 @@ export class Main {
   async onTopicSubmit() {
     if (!this.topicInputElement) return;
 
-    await this.wikipedia.browseWikipedia(this.topicInputElement.value);
+    await this.wikipedia.search(this.topicInputElement.value);
   }
 
   async onQuestionSubmit() {
