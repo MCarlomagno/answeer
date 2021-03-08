@@ -1,12 +1,14 @@
-import { AnswerService, MockAnswerService } from '../services/answer.service';
-import { MockTextService } from '../services/search.service';
+
+
 import { Main } from '../app/main';
+import { QuestionAndAnswer } from '../services/question-and-answer';
+import { Wikipedia } from '../services/wikipedia';
 
 describe('main', () => {
   // setup dummy services
-  const answerService = new MockAnswerService();
-  const searchService = new MockTextService();
-  const main = new Main(answerService, searchService);
+  const questionAndAnswer = new QuestionAndAnswer();
+  const wikipedia = new Wikipedia();
+  const main = new Main(questionAndAnswer, wikipedia);
 
   describe('showLoader', () => {
     it('should return "visible" if true', async () => {

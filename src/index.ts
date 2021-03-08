@@ -1,8 +1,8 @@
 import { Main } from './app/main';
-import { WikipediaAnswerService } from './services/answer.service';
-import { SearchService, SearchTextService } from './services/search.service';
+import { QuestionAndAnswer } from './services/question-and-answer';
+import { Wikipedia } from './services/wikipedia';
 
-const answerService = new WikipediaAnswerService();
-const searchServcice = new SearchTextService();
+const wikipedia = new Wikipedia();
+const questionAndAnswer = new QuestionAndAnswer();
 
-window.onload = () => new Main(answerService, searchServcice);
+window.onload = () => new Main(questionAndAnswer, wikipedia);
