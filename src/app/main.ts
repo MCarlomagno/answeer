@@ -75,17 +75,26 @@ export class Main {
   async onTopicSubmit() {
     if (!this.topicInputElement) return;
 
-    await this.wikipedia.search(this.topicInputElement.value);
+    let result;
+    try {
+      result = await this.wikipedia.search(this.topicInputElement.value);
+    } catch(err) {
+      result = err.toString();
+    }
   }
 
   async onQuestionSubmit() {
     if (!this.questionInputElement || !this.outputElement) return;
 
+    const context = this.wikipedia.getContext();
+    if (!context) return;
+
+    this.showLoader(true);
     const answers = await this.qna.predict(
       this.questionInputElement.value,
-      this.outputElement.innerText
+      context
     );
-
+    this.showLoader(false);
     console.log(answers);
   }
 }
