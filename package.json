@@ -8,7 +8,7 @@
     "tscw": "tsc --watch",
     "wp": "webpack",
     "wpw": "webpack --watch",
-    "serve": "http-server build",
+    "serve": "http-server dist",
     "test": "jest --coverage"
   },
   "devDependencies": {
