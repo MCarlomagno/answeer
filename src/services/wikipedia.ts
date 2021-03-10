@@ -13,12 +13,16 @@ export class Wikipedia {
     const isAmbiguous = this.isAmbiguous(query, response.text());
     if(isAmbiguous) throw new Error('The query must be more specific')
 
-    this.context = response.text();
-    return response.text()
+    this.context = this.firstParagraph(response);
+    return this.context;
   }
 
   getContext() {
     return this.context;
+  }
+
+  firstParagraph(response: wtf.Document) {
+    return response.paragraph(0).text();
   }
 
   isAmbiguous(query: string, response: string) {

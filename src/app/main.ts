@@ -1,3 +1,4 @@
+import { IFFT } from '@tensorflow/tfjs';
 import { enviroment } from '../enviroment/enviroment';
 import { QuestionAndAnswer } from '../services/question-and-answer';
 import { Wikipedia } from '../services/wikipedia';
@@ -75,26 +76,41 @@ export class Main {
   async onTopicSubmit() {
     if (!this.topicInputElement) return;
 
+    this.showLoader(true);
     let result;
     try {
       result = await this.wikipedia.search(this.topicInputElement.value);
     } catch(err) {
       result = err.toString();
     }
+
+    this.showLoader(false);
   }
 
   async onQuestionSubmit() {
     if (!this.questionInputElement || !this.outputElement) return;
+    this.showLoader(true);
 
     const context = this.wikipedia.getContext();
-    if (!context) return;
-
-    this.showLoader(true);
+    if (!context) {
+      this.showLoader(false);
+      return
+    };
+    
     const answers = await this.qna.predict(
       this.questionInputElement.value,
       context
     );
+
+    if(!answers || answers.length === 0) {
+      this.outputElement.innerText = "No answer found :(";
+      this.showLoader(false);
+      return;
+      
+    }
+      
+    this.outputElement.innerText = answers.map(a => a.text).join('\r\n');
     this.showLoader(false);
-    console.log(answers);
+    
   }
 }
