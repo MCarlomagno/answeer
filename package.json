@@ -24,6 +24,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material/textfield": "^10.0.0",
     "@tensorflow-models/qna": "^1.0.0",
     "@tensorflow/tfjs": "^2.8.6",
     "@types/jest": "^26.0.20",
