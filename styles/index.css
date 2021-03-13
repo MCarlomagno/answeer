@@ -90,6 +90,15 @@ ul.topnav li.right {float: right;}
     height: 50px;
     animation: spin 1s linear infinite;
 }
+
+.answer {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  max-width: 600px;
+  font-size: 20px;
+  margin-top:10px;
+  margin: auto;
+}
   
 @keyframes spin {
     0% { transform: rotate(0deg); }

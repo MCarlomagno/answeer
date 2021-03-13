@@ -30,11 +30,11 @@ export class Main {
   }
 
   async setup() {
-    this.showLoader(true);
+    this.setLoading(true);
     this.setupDOM();
     this.setupEventHandling();
     if (enviroment.prod) await this.loadModel();
-    this.showLoader(false);
+    this.setLoading(false);
   }
 
   async loadModel() {
@@ -56,44 +56,65 @@ export class Main {
   }
 
   setupEventHandling() {
-    if (this.topicSubmitElement) {
-      this.topicSubmitElement.onclick = this.onTopicSubmit.bind(this);
-    }
     if (this.questionSubmitElement) {
       this.questionSubmitElement.onclick = this.onQuestionSubmit.bind(this);
     }
   }
 
-  showLoader(show: boolean) {
+  showLoader() {
+    if (!this.loaderElement || 
+        !this.topicInputElement || 
+        !this.questionInputElement) return;
+
+    const visibility = 'visible';
+    this.loaderElement.style.visibility = visibility;
+    this.topicInputElement.disabled = true;
+    this.questionInputElement.disabled = true;
+    return visibility;
+  }
+
+  hideLoader() {
+    if (!this.loaderElement || 
+        !this.topicInputElement || 
+        !this.questionInputElement) return;
+    
+    const visibility = 'hidden';
+    this.loaderElement.style.visibility = visibility;
+    this.topicInputElement.disabled = false;
+    this.questionInputElement.disabled = false;
+    return visibility;
+  }
+
+  setLoading(show: boolean) {
     if (!this.loaderElement) return;
 
-    const visibility = show ? 'visible' : 'hidden';
-    this.loaderElement.style.visibility = visibility;
+    let visibility;
+    if(show) visibility = this.showLoader();
+    else visibility = this.hideLoader();
 
     return visibility;
   }
 
-  async onTopicSubmit() {
+  async loadTopic() {
     if (!this.topicInputElement) return;
 
-    this.showLoader(true);
     let result;
     try {
       result = await this.wikipedia.search(this.topicInputElement.value);
     } catch(err) {
-      result = err.toString();
+      console.log(err.toString());
     }
-
-    this.showLoader(false);
+    return result;
   }
 
   async onQuestionSubmit() {
     if (!this.questionInputElement || !this.outputElement) return;
-    this.showLoader(true);
+    this.setLoading(true);
 
-    const context = this.wikipedia.getContext();
+    const context = await this.loadTopic();
+    console.log(context);
     if (!context) {
-      this.showLoader(false);
+      this.setLoading(false);
       return
     };
     
@@ -104,13 +125,13 @@ export class Main {
 
     if(!answers || answers.length === 0) {
       this.outputElement.innerText = "No answer found :(";
-      this.showLoader(false);
+      this.setLoading(false);
       return;
       
     }
       
     this.outputElement.innerText = answers.map(a => a.text).join('\r\n');
-    this.showLoader(false);
+    this.setLoading(false);
     
   }
 }
