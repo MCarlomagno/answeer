@@ -25,32 +25,46 @@
   <main >
     <body>
       <div id="loader" class="loader"></div>
-      <p id=subtitle class="subtitle">
-        This is a web application able to ask questions with a given topic by 
-        using Natural language processing and Wikipedia API.
-      </p>
+
+      <div class="mdc-card" style="padding: 30px;">
+        <p id=subtitle class="subtitle">
+          This is a web application able to ask questions with a given topic by 
+          using Natural language processing and Wikipedia API.
+        </p>
+
+        <div>
+          <div class="input-button">
   
-      <div>
-        <div class="input-button">
-          <label class="mdc-text-field mdc-text-field--filled">
-            <span class="mdc-text-field__ripple"></span>
-            <span class="mdc-floating-label" id="topic">topic</span>
-            <input id="topic-input" class="mdc-text-field__input" type="search" aria-labelledby="topic-aria-label">
-            <span class="mdc-line-ripple"></span>
-          </label>
-          <button id="topic-submit" type="button">load topic</button>
-        </div>
-    
-        <div class="input-button">
-          <label class="mdc-text-field mdc-text-field--filled">
-            <span class="mdc-text-field__ripple"></span>
-            <span class="mdc-floating-label" id="question">question</span>
-            <input id="question-input"  class="mdc-text-field__input" type="search" aria-labelledby="question-aria-label">
-            <span class="mdc-line-ripple"></span>
-          </label>
-          <button id="question-submit" type="submit">ask question</button>
+            <label class="mdc-text-field mdc-text-field--filled">
+              <span class="mdc-text-field__ripple"></span>
+              <span class="mdc-floating-label" id="topic">topic</span>
+              <input id="topic-input" class="mdc-text-field__input" type="search" aria-labelledby="topic-aria-label">
+              <span class="mdc-line-ripple"></span>
+            </label>
+  
+            <button id="topic-submit" type="button" class="mdc-button mdc-button--raised">
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label">load topic</span>
+            </button>
+          </div>
+      
+          <div class="input-button">
+            <label class="mdc-text-field mdc-text-field--filled">
+              <span class="mdc-text-field__ripple"></span>
+              <span class="mdc-floating-label" id="question">question</span>
+              <input id="question-input"  class="mdc-text-field__input" type="search" aria-labelledby="question-aria-label">
+              <span class="mdc-line-ripple"></span>
+            </label>
+  
+            <button id="question-submit" type="button" class="mdc-button mdc-button--raised">
+              <span class="mdc-button__ripple"></span>
+              <span class="mdc-button__label">ask question</span>
+            </button>
+          </div>
         </div>
       </div>
+  
+      
 
   
       <p id="output"></p>
