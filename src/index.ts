@@ -10,7 +10,6 @@ if(textElements) {
     })
 }
 
-
 const wikipedia = new Wikipedia();
 const questionAndAnswer = new QuestionAndAnswer();
 

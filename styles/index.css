@@ -50,6 +50,17 @@ footer {
   padding-top: 20px;
 }
 
+.icons {
+  margin: 20px;
+}
+
+.icon {
+  color: white;
+  font-size: 30px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
 .nav-icon {
     font-size: 30px;
 }
@@ -96,7 +107,7 @@ ul.topnav li.right {float: right;}
   font-family: 'Lato', sans-serif;
   max-width: 600px;
   font-size: 20px;
-  margin-top:10px;
+  padding-top: 20px;
   margin: auto;
 }
   
