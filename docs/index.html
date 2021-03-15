@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Web application able to ask questions with a given topic by using Natural language processing and Wikipedia API" />
+    <meta name="keywords" content="Machine learning, wikipedia, Natural Language Processing, web development" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Wikibot</title>
+  </head>
+  <header >
+    <ul class="topnav">
+      <li class="left nav-title">Wikibot</li>
+      <li class="right nav-icon">
+        <a target="_blank" href="https://github.com/MCarlomagno/wikibot">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+    </ul>
+  </header>
+  <main >
+    <body>
+      <div id="loader" class="loader"></div>
+
+        <p id=subtitle class="subtitle">
+          This is a web application that ask questions with a given topic by 
+          using Natural language processing and Wikipedia API.
+        </p>
+
+        <div>
+          <div class="input-button">
+            <label class="mdc-text-field mdc-text-field--filled">
+              <span class="mdc-text-field__ripple"></span>
+              <span class="mdc-floating-label" id="topic">topic</span>
+              <input id="topic-input" class="mdc-text-field__input" type="search" aria-labelledby="topic-aria-label">
+              <span class="mdc-line-ripple"></span>
+            </label>
+          </div>
+      
+          <div class="input-button">
+            <label class="mdc-text-field mdc-text-field--filled">
+              <span class="mdc-text-field__ripple"></span>
+              <span class="mdc-floating-label" id="question">question</span>
+              <input id="question-input"  class="mdc-text-field__input" type="search" aria-labelledby="question-aria-label">
+              <span class="mdc-line-ripple"></span>
+            </label>
+          </div>
+        </div>
+        <div class="input-button">
+          <button id="question-submit" type="button" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__ripple"></span>
+            <span class="mdc-button__label">ask question</span>
+          </button>
+        </div>
+  
+      <p id="output" class="answer"></p>
+      <script src="main-bundle.js"></script>
+    </body>
+    <footer>
+      <p class="footer-text">
+        Made with ❤️ by Marcos Carlomagno
+      </p>
+      <div class="icons">
+        <a class="icon" target="_blank" href="https://github.com/MCarlomagno">
+          <i class="fab fa-github"></i>
+        </a>
+        <a class="icon" target="_blank" href="https://www.linkedin.com/in/marcos-carlomagno/">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+  </footer>
+  </main>
+  
+</html>
